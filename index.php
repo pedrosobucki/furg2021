@@ -1,10 +1,11 @@
+<?php require_once "conexao.php"; ?>
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8">
 		<title>Aula 1</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="estilo.css">
 	</head>
 	<body>
 		<header>
@@ -22,12 +23,25 @@
 			
 
 			<!--MENU-->
-			<ul class="menu" class="centered">
-				<li><a href="index.php?pag=home"><p class="bold">HOME</p></a></li>
-				<li><a href="index.php?pag=listar"><p class="bold">LISTAR</p></a></li>
-				<li><a href="index.php?pag=inserir"><p class="bold">INSERIR</p></a></li>
-				<li><a href="index.php?pag=buscar"><p class="bold">BUSCAR</p></a></li>
-			</ul>
+			<!--<nav>-->
+				<ul class="menu" class="centered">
+					<li><a href="index.php?pag=home"><p class="bold">HOME</p></a></li>
+					<li><a href=""><p class="bold">LISTAR</p></a>
+						<ul class="submenu">
+							<li><a href="index.php?pag=listar_contato"><p class="bold">CONTATO</p></a></li>
+							<li><a href="index.php?pag=listar_cargo"><p class="bold">CARGO</p></a></li>
+						</ul>
+					</li>
+					<li><a href=""><p class="bold">INSERIR</p></a>
+						<ul class="submenu">
+							<li><a href="index.php?pag=inserir_contato"><p class="bold">CONTATO</p></a></li>
+							<li><a href="index.php?pag=inserir_cargo"><p class="bold">CARGO</p></a></li>
+						</ul>
+					</li>
+					<li><a href="index.php?pag=buscar"><p class="bold">BUSCAR</p></a></li>
+				</ul>
+			<!--</nav>-->
+			
 
 			<!--CORPO-->
 			<div id="corpo-wrapper">

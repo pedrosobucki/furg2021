@@ -29,9 +29,6 @@
 				echo mysql_error()."<br>";
 			}
 
-			header("Location: index.php?pag=cargo&status=ok");
-			exit();
-
 			break;
 		case "editar":
 
