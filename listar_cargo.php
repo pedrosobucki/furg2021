@@ -1,4 +1,13 @@
 <?php
+	//mensagem de sucesso ou falha
+	if(isset($_GET["status"]) and !empty($_GET["status"])){
+		if($_GET["status"]=="ok"){
+			echo '<p class="text-large">Dados inseridos com sucesso!<br><br></p>';
+		}else if($_GET["status"]=="falha"){
+			echo '<p class="text-large">Falha na inserção de dados!<br><br></p>';
+		}
+	}
+	
 	$query = 'SELECT id_cargo, cargo_nome FROM cargo';
 	$stmt = mysqli_stmt_init($link);
 	mysqli_stmt_prepare($stmt, $query);

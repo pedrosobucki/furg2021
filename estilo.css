@@ -227,6 +227,11 @@ td{
     text-align: center;
 }
 
+select{
+    padding: 2px;
+    margin: 10xp;
+}
+
 .footer-wrapper{
     background-color: black;
     padding-top:30px;
