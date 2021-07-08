@@ -36,7 +36,7 @@
 			<p class="text-large">E-MAIL: <input type="text" name="email" class="text-large"><br></p>
 			<p class="text-large">TELEFONE: <input type="number" name="telefone" class="text-large"><br><br></p>
 
-			<select name="cargo">
+			<select name="cargo" class="text-large">
 				<?php 
 				foreach ($option as $key => $value) {
 					echo $value;

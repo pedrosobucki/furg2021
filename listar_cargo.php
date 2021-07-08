@@ -12,7 +12,6 @@
 		echo '<p class="text-large">'.$numero_linhas.' registro(s) encontrados!<br><br></p>';
 
 		while ($linha = mysqli_fetch_array($res)) {
-
 			$id_cargo = $linha['id_cargo'];
 			$cargo_nome = $linha['cargo_nome'];
 

@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Aula 1</title>
+		<title>FURG 2021</title>
 		<link rel="stylesheet" type="text/css" href="estilo.css">
 	</head>
 	<body>

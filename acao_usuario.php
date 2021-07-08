@@ -1,20 +1,20 @@
 <?php
 	require_once "conexao.php";
-	$conteudo_recebido=$_POST;
 	$acao=$_REQUEST["acao"];
 
 	switch ($acao) {
 		case "inserir_contato":
-			$nome=$conteudo_recebido["nome"];
-			$email=$conteudo_recebido["email"];
-			$telefone=$conteudo_recebido["telefone"];
+			$nome=$_POST["nome"];
+			$email=$_POST["email"];
+			$telefone=$_POST["telefone"];
+			$id_cargo=$_POST["cargo"];
 			
-			$query = 'INSERT INTO contato(nome, email, telefone) VALUES (?,?,?)';
+			$query = 'INSERT INTO contato(nome, email, telefone, id_cargo) VALUES (?,?,?,?)';
 			$stmt = mysqli_stmt_init($link);
 			
 			try{
 				mysqli_stmt_prepare($stmt, $query);
-				mysqli_stmt_bind_param($stmt, "ssi", $nome, $email, $telefone);
+				mysqli_stmt_bind_param($stmt, "ssii", $nome, $email, $telefone, $id_cargo);
 				if(mysqli_stmt_execute($stmt)){
 					echo mysqli_stmt_affected_rows($stmt)." row(s) affected!<br>";
 					//die;
@@ -32,10 +32,9 @@
 		
 			break;
 		case "inserir_cargo":
-			$cargo=$conteudo_recebido["cargo"];
+			$cargo=$_POST["cargo"];
 			
 			$query = 'INSERT INTO cargo(cargo_nome) VALUES (?)';
-
 			$stmt = mysqli_stmt_init($link);
 
 			try{
@@ -64,20 +63,22 @@
 			$nome=$_POST["nome"];
 			$email=$_POST["email"];
 			$telefone=$_POST["telefone"];
+			$id_cargo=$_POST["cargo"];
 
 			$query = 'UPDATE contato 
 					  SET nome=?,
 					  	  email=?,
-					      telefone=?
+					      telefone=?,
+						  id_cargo=?
 					      WHERE id_contato=?';
 
 			$stmt = mysqli_stmt_init($link);
 			try{
 				mysqli_stmt_prepare($stmt, $query);
-				mysqli_stmt_bind_param($stmt, "ssii", $nome, $email, $telefone, $id_contato);
+				mysqli_stmt_bind_param($stmt, "ssiii", $nome, $email, $telefone, $id_cargo, $id_contato);
 
 				if(mysqli_stmt_execute($stmt)){
-					echo mysqli_stmt_affected_rows($stmt)."row(s) affected!<br>";
+					//echo mysqli_stmt_affected_rows($stmt)."row(s) affected!<br>";
 					$estado='ok';
 				}else{
 					$estado='falha';
@@ -88,17 +89,17 @@
 				die;
 			}
 
-			header("Location: index.php?pag=listar_contato&status=ok");
+			header("Location: index.php?pag=listar_contato&status=".$estado);
 			exit();
 
 			break;
 		case "editar_cargo":
 
-			$id_contato=$_POST["id_cargo"];
-			$cargo_nome=$_POST["cargo_nome"];
+			$id_cargo=$_POST["id_cargo"];
+			$cargo_nome=$_POST["cargo"];
 
-			$query = 'UPDATE contato 
-					  SET cargo_nome=?,
+			$query = 'UPDATE cargo 
+					  SET cargo_nome=?
 					  WHERE id_cargo=?';
 
 			$stmt = mysqli_stmt_init($link);
@@ -107,7 +108,7 @@
 				mysqli_stmt_bind_param($stmt, "si", $cargo_nome, $id_cargo);
 
 				if(mysqli_stmt_execute($stmt)){
-					echo mysqli_stmt_affected_rows($stmt)."row(s) affected!<br>";
+					//echo mysqli_stmt_affected_rows($stmt)."row(s) affected!<br>";
 					$estado='ok';
 				}else{
 					$estado='falha';
@@ -118,7 +119,7 @@
 				die;
 			}
 
-			header("Location: index.php?pag=listar_cargo&status=ok");
+			header("Location: index.php?pag=listar_cargo&status=".$estado);
 			exit();
 
 			break;
@@ -144,7 +145,7 @@
 				die;
 			}
 			
-			header("Location: index.php?pag=listar_contato&status=ok");
+			header("Location: index.php?pag=listar_contato&status=".$estado);
 			exit();
 
 			break;
@@ -170,7 +171,7 @@
 				die;
 			}
 			
-			header("Location: index.php?pag=listar_cargo&status=ok");
+			header("Location: index.php?pag=listar_cargo&status=".$estado);
 			exit();
 
 			break;

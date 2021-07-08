@@ -1,7 +1,7 @@
 <?php 
 	define("HOST", "localhost");
 	define("USER", "root");
-	define("PASS", "");
+	define("PASS", "505");
 	define("BASE", "agenda");
 
     $link = mysqli_connect(HOST, USER, PASS, BASE);
