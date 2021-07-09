@@ -45,7 +45,7 @@
 
 			<!--CORPO-->
 			<div id="corpo-wrapper">
-				<div id="corpo" class="centered">
+				<div id="corpo">
 					<?php
 						if(isset($_GET["pag"]) and !empty($_GET["pag"])){
 							$pg = $_GET["pag"];

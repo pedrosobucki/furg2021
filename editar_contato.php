@@ -54,22 +54,28 @@
 			$option[]=$tab;
 		}
 ?>
-
-<form method="POST" action="acao_usuario.php" class="text-large">
+<div class="form-wrapper">
+<form method="POST" action="acao_usuario.php" class="insert-form text-large uppercase">
 	<input type="hidden" name="acao" value="editar_contato">
 	<input type="hidden" name="id_contato" value="<?php echo $id_contato?>">
+	
+	<div class="information">
+		<div class="insert-name">Nome<br><input type="text" name="nome" class="text-large" value="<?php echo $nome?>"></div>
+		<div class="insert-email">e-mail<br><input type="text" name="email" class="text-large" value="<?php echo $email?>"></div>
+		<div class="insert-telefone">Telefone<br><input type="text" name="telefone" class="text-large" value="<?php echo $telefone?>"></div>
+		<div class="insert-cargo">Cargo<br><select name="cargo" class="text-large">
+					<?php 
+					foreach ($option as $key => $value) {
+						echo $value;
+					} ?>
+			</select>
+			</div>
 
-	Nome: <input type="text" name="nome" value="<?php echo $nome?>"><br>
-	e-mail: <input type="text" name="email" value="<?php echo $email?>"><br>
-	Telefone: <input type="text" name="telefone" value="<?php echo $telefone?>"><br><br>
+			<br>
 
-	<select name="cargo" class="text-large">
-			<?php 
-			foreach ($option as $key => $value) {
-				echo $value;
-			} ?>
-	</select>
-	<br>
+		<input type="submit" name="botao" value="Enviar" class="button text-large">
+	</div>
 
-	<input type="submit" name="botao" value="Enviar" class="button text-large">
+	
 </form>
+</div>

@@ -27,12 +27,17 @@
 
 	}
 ?>
-
-<form method="POST" action="acao_usuario.php" class="text-large">
+<div class="form-wrapper">
+<form method="POST" action="acao_usuario.php" class="insert-form text-large uppercase">
 	<input type="hidden" name="acao" value="editar_cargo">
 	<input type="hidden" name="id_cargo" value="<?php echo $id_cargo?>">
 
-	Cargo: <input type="text" name="cargo" value="<?php echo $cargo_nome?>"><br>
+	<div class="information">
+		<div class="insert-nome-cargo">Cargo<br><input type="text" name="cargo" class="text-large" value="<?php echo $cargo_nome?>"><br></div>
+		<br>
+		<input type="submit" name="botao" value="Enviar" class="button text-large">
+	</div>
 
-	<input type="submit" name="botao" value="Enviar" class="button text-large">
+	
 </form>
+</div>

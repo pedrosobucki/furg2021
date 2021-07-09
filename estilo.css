@@ -39,8 +39,32 @@ body{
     min-height: 100%;
 }
 
-.text-insert{
-    text-align: center;
+.uppercase{
+    text-transform: uppercase;
+}
+
+.insert-form{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.insert-cargo select{
+    display: block;
+    border-radius: 200px;
+}
+.insert-name{
+    display: block;
+    border-radius: 200px;
+}
+.insert-cargo{
+    display: block;
+    border-radius: 200px;
+}
+
+.information{
+    width: fit-content;
+    margin-bottom: 10px;
 }
 
 input{
@@ -88,11 +112,17 @@ input{
     font-size: large;
 }
 
+.search{
+    margin-bottom: 10px;
+}
+
 .bold{
     font-weight: bold;
 }
 
 .button{
+    font-weight: bold;
+    text-transform: uppercase;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -107,6 +137,7 @@ input{
 }
 
 .button:hover, .button:focus{
+    text-transform: uppercase;
     font-weight: bold;
     padding-top: 5px;
     padding-bottom: 5px;

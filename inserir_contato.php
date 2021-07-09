@@ -1,16 +1,8 @@
-<form method="POST" action="acao_usuario.php">
+<div class="form-wrapper">
+<form method="POST" action="acao_usuario.php" class="insert-form text-large uppercase">
 	<input type="hidden" name="acao" value="inserir_contato">
 
 	<?php
-		//mensagem de sucesso ou falha
-		if(isset($_GET["status"]) and !empty($_GET["status"])){
-			if($_GET["status"]=="ok"){
-				echo '<p class="text-large">Dados inseridos com sucesso!<br><br></p>';
-			}else if($_GET["status"]=="falha"){
-				echo '<p class="text-large">Falha na inserção de dados!<br><br></p>';
-			}
-		}
-
 		//seletor de cargo
 		$option=array();
 		$query = 'SELECT id_cargo, cargo_nome FROM cargo';
@@ -30,20 +22,34 @@
 			$option[]=$tab;
 		}
 	?>
-
-	<div class="text-insert">
-			<p class="text-large">NOME:<input type="text" name="nome" class="text-large"><br></p>
-			<p class="text-large">E-MAIL: <input type="text" name="email" class="text-large"><br></p>
-			<p class="text-large">TELEFONE: <input type="number" name="telefone" class="text-large"><br><br></p>
-
-			<select name="cargo" class="text-large">
-				<?php 
-				foreach ($option as $key => $value) {
-					echo $value;
-				} ?>
-			</select>
-	</div>
 	
+	<div class="information">
+		<?php
+		//mensagem de sucesso ou falha
+		if(isset($_GET["status"]) and !empty($_GET["status"])){
+			if($_GET["status"]=="ok"){
+				echo '<p class="text-large">Dados inseridos com sucesso!<br><br></p>';
+			}else if($_GET["status"]=="falha"){
+				echo '<p class="text-large">Falha na inserção de dados!<br><br></p>';
+			}
+		}
+		?>
+	
+		<div class="insert-name">Nome<br><input type="text" name="nome" class="text-large"></div>
+		<div class="insert-email">e-mail<br><input type="text" name="email" class="text-large"></div>
+		<div class="insert-telefone">Telefone<br><input type="text" name="telefone" class="text-large"></div>
+		<div class="insert-cargo">Cargo<br><select name="cargo" class="text-large">
+					<?php 
+					foreach ($option as $key => $value) {
+						echo $value;
+					} ?>
+			</select>
+			</div>
 
-	<input type="submit" name="botao" value="ENVIAR" class="button text-large bold">
+			<br>
+
+		<input type="submit" name="botao" value="Enviar" class="button text-large">
+	</div>
+
 </form>
+</div>

@@ -16,7 +16,7 @@
 				mysqli_stmt_prepare($stmt, $query);
 				mysqli_stmt_bind_param($stmt, "ssii", $nome, $email, $telefone, $id_cargo);
 				if(mysqli_stmt_execute($stmt)){
-					echo mysqli_stmt_affected_rows($stmt)." row(s) affected!<br>";
+					//echo mysqli_stmt_affected_rows($stmt)." row(s) affected!<br>";
 					//die;
 					$estado='ok';
 				}else{
@@ -174,6 +174,10 @@
 			header("Location: index.php?pag=listar_cargo&status=".$estado);
 			exit();
 
+			break;
+		case "buscar":
+			header("Location: index.php?pag=buscar&pesquisa=".$_POST['search']);
+			exit();
 			break;
 		default:
 			echo "acao invalida";
